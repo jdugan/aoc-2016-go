@@ -1,4 +1,4 @@
-package day00
+package day12
 
 import (
 	"fmt"
@@ -10,7 +10,7 @@ import (
 
 func Both() {
 	fmt.Println(" ")
-	fmt.Println("DAY", 0)
+	fmt.Println("DAY", 12)
 	fmt.Println("  Puzzle 1", "=>", Puzzle1())
 	fmt.Println("  Puzzle 2", "=>", Puzzle2())
 	fmt.Println(" ")
@@ -27,7 +27,7 @@ func Puzzle2() int {
 // ========== PRIVATE FNS =================================
 
 func data() []string {
-	lines := reader.Lines("./data/day00/input.txt")
+	lines := reader.Lines("./data/day12/input.txt")
 
 	return lines
 }
