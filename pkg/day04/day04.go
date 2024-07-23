@@ -16,18 +16,38 @@ func Both() {
 	fmt.Println(" ")
 }
 
+// 749 too low
 func Puzzle1() int {
-	return -1
+	sum := 0
+	for _, room := range rooms() {
+		if room.IsValid() {
+			sum += room.sector
+		}
+	}
+	return sum
 }
 
 func Puzzle2() int {
-	return -2
+	secret_name := "northpole object storage"
+	sector      := 0
+	for sector == 0 {
+		for _, room := range rooms() {
+			if room.IsValid() && room.DecryptName() == secret_name {
+				sector = room.sector
+			}
+		}
+	}
+	return sector
 }
 
 // ========== PRIVATE FNS =================================
 
-func data() []string {
+func rooms() []Room {
+	rooms := make([]Room, 0)
 	lines := reader.Lines("./data/day04/input.txt")
-
-	return lines
+	for _, line := range lines {
+		room := Room{}.Parse(line)
+		rooms = append(rooms, room)
+	}
+	return rooms
 }
