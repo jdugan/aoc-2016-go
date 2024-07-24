@@ -16,18 +16,19 @@ func Both() {
 	fmt.Println(" ")
 }
 
-func Puzzle1() int {
-	return -1
+func Puzzle1() string {
+	decoder := Decoder{ seed: seed() }
+	return decoder.FindSimplePassword()
 }
 
-func Puzzle2() int {
-	return -2
+func Puzzle2() string {
+	decoder := Decoder{ seed: seed() }
+	return decoder.FindComplexPassword()
 }
 
 // ========== PRIVATE FNS =================================
 
-func data() []string {
+func seed() string {
 	lines := reader.Lines("./data/day05/input.txt")
-
-	return lines
+	return lines[0]
 }
