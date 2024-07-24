@@ -16,18 +16,18 @@ func Both() {
 	fmt.Println(" ")
 }
 
-func Puzzle1() int {
-	return -1
+func Puzzle1() string {
+	decoder := Decoder{ data: data() }
+	return decoder.DecryptByFrequency()
 }
 
-func Puzzle2() int {
-	return -2
+func Puzzle2() string {
+	decoder := Decoder{ data: data() }
+	return decoder.DecryptByScarcity()
 }
 
 // ========== PRIVATE FNS =================================
 
 func data() []string {
-	lines := reader.Lines("./data/day06/input.txt")
-
-	return lines
+	return reader.Lines("./data/day06/input.txt")
 }

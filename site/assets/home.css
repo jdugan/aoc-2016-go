@@ -1,1 +1,4 @@
 .calendar .calendar-streets {color:#666666;}
+.calendar a.calendar-verycomplete .calendar-window-green  { color:#009900; text-shadow:0 0 5px #009900; }
+.calendar a.calendar-verycomplete .calendar-window-dark   { color:#333333; }
+.calendar a.calendar-verycomplete .calendar-window-red    { color:#ff0000; text-shadow:0 0 5px #ff0000; }
