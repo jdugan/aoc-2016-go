@@ -17,11 +17,13 @@ func Both() {
 }
 
 func Puzzle1() int {
-	return -1
+	validator := Validator{ addresses: data() }
+	return validator.TlsCount()
 }
 
 func Puzzle2() int {
-	return -2
+	validator := Validator{ addresses: data() }
+	return validator.SslCount()
 }
 
 // ========== PRIVATE FNS =================================

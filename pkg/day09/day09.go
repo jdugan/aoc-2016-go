@@ -17,7 +17,9 @@ func Both() {
 }
 
 func Puzzle1() int {
-	return -1
+	file := file()
+	file.Decompress()
+	return file.Size()
 }
 
 func Puzzle2() int {
@@ -26,8 +28,7 @@ func Puzzle2() int {
 
 // ========== PRIVATE FNS =================================
 
-func data() []string {
+func file() File {
 	lines := reader.Lines("./data/day09/input.txt")
-
-	return lines
+	return File{ lines }
 }
