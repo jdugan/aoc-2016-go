@@ -18,12 +18,12 @@ func Both() {
 
 func Puzzle1() int {
 	file := file()
-	file.Decompress()
-	return file.Size()
+	return file.DecompressedSize(false)
 }
 
 func Puzzle2() int {
-	return -2
+	file := file()
+	return file.DecompressedSize(true)
 }
 
 // ========== PRIVATE FNS =================================

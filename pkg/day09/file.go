@@ -15,7 +15,7 @@ type File struct {
 
 // ========== RECEIVERS ===================================
 
-func (f *File) Decompress () {
+func (f *File) BruteForceDecompress () {
 	new_lines := make([]string, 0)
 	for _, line := range f.lines {
 		new_line   := ""
@@ -55,10 +55,45 @@ func (f *File) Decompress () {
 	f.lines = new_lines
 }
 
+func (f File) DecompressedLineSize (line string, recursive bool) int {
+	size := 0
+	idx  := 0
+	for idx < len(line) {
+		substr := line[idx:]
+		idx1   := strings.Index(substr, "(")
+		if idx1 > -1 {
+			idx2      := strings.Index(substr, ")")
+			marker    := substr[idx1+1:idx2]
+			parts     := strings.Split(marker, "x")
+			length, _ := strconv.Atoi(parts[0])
+			times, _  := strconv.Atoi(parts[1])
+			idx       += idx2 + length + 1
+			if recursive {
+				start  := idx2 + 1
+				finish := start + length
+				inner  := substr[start:finish]
+				length  = f.DecompressedLineSize(inner, recursive)
+			}
+			size += idx1 + (length * times)
+		} else {
+			size += len(substr)
+			idx  += len(substr)
+		}
+	}
+	return size
+}
+
+func (f File) DecompressedSize (recursive bool) int {
+	sum := 0
+	for _, line := range f.lines {
+		sum += f.DecompressedLineSize(line, recursive)
+	}
+	return sum
+}
+
 func (f File) Size () int {
 	sum := 0
 	for _, line := range f.lines {
-		fmt.Println(line)
 		sum += len(line)
 	}
 	return sum

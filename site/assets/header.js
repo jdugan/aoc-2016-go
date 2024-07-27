@@ -1,4 +1,4 @@
 window.onload = function() {
     let el = document.querySelector(".star-count")
-    el.innerHTML = "12*"
+    el.innerHTML = "18*"
 }
